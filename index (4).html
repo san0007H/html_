@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Pandurang Magar | Orthopaedic Surgeon</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #0a1628;
+      --deep: #0d1f3c;
+      --gold: #c9a84c;
+      --gold-light: #e8c96d;
+      --gold-pale: #f5e9c4;
+      --cream: #faf7f0;
+      --white: #ffffff;
+      --text-muted: #8a9bb5;
+      --text-body: #4a5568;
+      --accent: #1a3a6b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.5;
+      transition: transform 0.35s ease, opacity 0.35s ease, width 0.3s ease, height 0.3s ease;
+      transform: translate(-50%, -50%);
+    }
+    body:hover .cursor { opacity: 1; }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(10,22,40,0.95), transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--white); font-weight: 400; font-style: italic; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta {
+      padding: 10px 26px;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.14em;
+      transition: all 0.3s !important;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(26,58,107,0.4) 0%, transparent 50%);
+    }
+
+    /* animated mesh */
+    .hero-mesh {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: meshMove 30s linear infinite;
+    }
+    @keyframes meshMove { 0% { transform: translate(0,0); } 100% { transform: translate(60px,60px); } }
+
+    .hero-left {
+      padding: 180px 60px 80px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 18px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px;
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      width: fit-content;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(1.3); } }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--white);
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+    .hero-name .dr { font-weight: 400; color: var(--gold); font-style: italic; font-size: 0.6em; display: block; margin-bottom: 6px; }
+    .hero-name .surname { color: var(--gold-light); }
+
+    .hero-title {
+      margin-top: 22px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.6);
+      animation: fadeUp 0.8s ease 0.55s both;
+    }
+    .hero-title strong { color: var(--gold); font-weight: 500; }
+
+    .hero-divider {
+      width: 80px; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 32px 0;
+      animation: fadeUp 0.8s ease 0.65s both;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.55);
+      max-width: 440px;
+      font-weight: 300;
+      animation: fadeUp 0.8s ease 0.75s both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 16px; margin-top: 44px;
+      animation: fadeUp 0.8s ease 0.85s both;
+    }
+    .btn-primary {
+      padding: 16px 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: none;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.5); }
+    .btn-secondary {
+      padding: 16px 36px;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: none;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      display: flex; gap: 48px; margin-top: 60px;
+      animation: fadeUp 0.8s ease 0.95s both;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-num sup { font-size: 0.55em; color: var(--gold-light); }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .hero-right {
+      position: relative; z-index: 2;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-top: 80px;
+      animation: fadeIn 1.2s ease 0.3s both;
+    }
+    .hero-img-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    .hero-img-bg {
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 520px; height: 620px;
+      background: linear-gradient(180deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.18) 100%);
+      border-radius: 300px 300px 0 0;
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+    .hero-img-glow {
+      position: absolute;
+      bottom: 100px; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+    @keyframes glowPulse { 0%,100% { opacity:0.5; transform:translateX(-50%) scale(1); } 50% { opacity:1; transform:translateX(-50%) scale(1.1); } }
+
+    .doctor-silhouette {
+      position: relative; z-index: 3;
+      width: 380px;
+      display: flex; align-items: center; justify-content: center;
+      padding-bottom: 0;
+    }
+    /* Doctor illustration using CSS art */
+    .doc-figure {
+      position: relative;
+      width: 280px; height: 500px;
+      margin: 0 auto;
+    }
+    .doc-head {
+      width: 90px; height: 100px;
+      background: linear-gradient(160deg, #f5d5b8, #e8b896);
+      border-radius: 50% 50% 45% 45%;
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      box-shadow: 0 0 40px rgba(201,168,76,0.2);
+    }
+    .doc-head::after {
+      content: '';
+      position: absolute; top: -20px; left: -10px; right: -10px;
+      height: 50px;
+      background: linear-gradient(135deg, #1a2a4a, #2a3a5a);
+      border-radius: 50% 50% 0 0;
+    }
+    .doc-coat {
+      position: absolute; top: 90px; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 340px;
+      background: linear-gradient(170deg, #f8f9fa, #e8eaf0, #d4d8e2);
+      border-radius: 20px 20px 40px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset -4px 0 20px rgba(0,0,0,0.1);
+    }
+    .doc-coat::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.04));
+    }
+    .doc-coat::after {
+      content: '';
+      position: absolute; top: 20px; left: 18px;
+      width: 55px; height: 18px;
+      background: linear-gradient(135deg, #1e3a6e, #2a4a8a);
+      border-radius: 3px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .doc-stethoscope {
+      position: absolute; top: 60px; left: 50%; transform: translateX(-50%);
+      width: 100px; height: 120px;
+      border: 5px solid rgba(201,168,76,0.8);
+      border-radius: 50px 50px 50px 50px / 40px 40px 60px 60px;
+      border-top: none;
+      z-index: 5;
+    }
+    .doc-stethoscope::before {
+      content: '';
+      position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+      width: 20px; height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(201,168,76,0.6);
+    }
+    .doc-arm-l {
+      position: absolute; top: 110px; left: -20px;
+      width: 50px; height: 200px;
+      background: linear-gradient(170deg, #f0f2f5, #d8dce6);
+      border-radius: 20px;
+      transform: rotate(-8deg);
+    }
+    .doc-arm-r {
+      position: absolute; top: 110px; right: -20px;
+      width: 50px; height: 200px;
+      background: linear-gradient(170deg, #f0f2f5, #d8dce6);
+      border-radius: 20px;
+      transform: rotate(8deg);
+    }
+    .doc-legs {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 160px; height: 80px;
+      background: linear-gradient(170deg, #2c3e6e, #1a2a4e);
+      border-radius: 0 0 20px 20px;
+    }
+
+    /* floating badges */
+    .float-badge {
+      position: absolute;
+      background: rgba(10,22,40,0.9);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 12px;
+      padding: 14px 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .fb-1 { top: 18%; left: 2%; animation: float1 5s ease-in-out infinite; }
+    .fb-2 { top: 45%; right: 3%; animation: float2 6s ease-in-out infinite; }
+    .fb-3 { bottom: 25%; left: 3%; animation: float1 7s ease-in-out infinite 1s; }
+    @keyframes float1 { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+    @keyframes float2 { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-15px); } }
+    .fb-title { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+    .fb-value { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); font-weight: 700; }
+    .fb-sub { font-size: 0.7rem; color: rgba(255,255,255,0.45); }
+    .fb-icon { font-size: 1.6rem; margin-bottom: 6px; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+    /* ABOUT */
+    .section { padding: 110px 80px; }
+    .section-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-tag::before {
+      content: '';
+      width: 30px; height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--white);
+    }
+    .section-title em { color: var(--gold); font-style: italic; }
+
+    .about { background: var(--deep); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 60px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .about-text p:first-child { font-size: 1.1rem; color: rgba(255,255,255,0.75); font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.25rem; }
+    .qual-list { list-style: none; margin-top: 36px; }
+    .qual-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; gap: 16px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+    }
+    .qual-list li::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .qual-badge {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .exp-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .exp-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute; top:0; left:0;
+      width: 3px; height: 100%;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .exp-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
+    .exp-card:hover::before { opacity: 1; }
+    .exp-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .exp-num sup { font-size: 0.45em; }
+    .exp-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* SPECIALTIES */
+    .specialties { background: var(--navy); }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .spec-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: none;
+    }
+    .spec-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .spec-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .spec-card:hover::after { opacity: 1; }
+    .spec-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+      border-radius: 16px;
+      border: 1px solid rgba(201,168,76,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 22px;
+      position: relative; z-index: 1;
+    }
+    .spec-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+      position: relative; z-index: 1;
+    }
+    .spec-desc {
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      position: relative; z-index: 1;
+    }
+
+    /* SERVICES */
+    .services { background: var(--deep); }
+    .services-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 60px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .service-item {
+      padding: 32px 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-right: 1px solid rgba(255,255,255,0.07);
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: background 0.3s;
+    }
+    .service-item:hover { background: rgba(201,168,76,0.04); }
+    .service-item:nth-child(2n) { border-right: none; }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      color: var(--gold);
+      opacity: 0.6;
+      flex-shrink: 0;
+      padding-top: 3px;
+    }
+    .service-name { font-size: 0.95rem; color: var(--white); font-weight: 500; margin-bottom: 6px; }
+    .service-detail { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--navy); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .testi-card:hover { border-color: rgba(201,168,76,0.2); }
+    .testi-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      color: var(--gold);
+      line-height: 0.6;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    .testi-text {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testi-name { font-weight: 500; color: var(--white); font-size: 0.9rem; }
+    .testi-role { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+    /* APPOINTMENT */
+    .appointment {
+      background: linear-gradient(135deg, var(--deep), var(--navy));
+      position: relative;
+      overflow: hidden;
+    }
+    .appointment::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 60%);
+      border-radius: 50%;
+    }
+    .appt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-items { margin-top: 40px; }
+    .contact-item {
+      display: flex; gap: 18px;
+      align-items: flex-start;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ci-icon {
+      width: 44px; height: 44px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+    .ci-label { font-size: 0.72rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .ci-value { font-size: 0.95rem; color: rgba(255,255,255,0.8); }
+
+    .appt-form { display: flex; flex-direction: column; gap: 18px; margin-top: 40px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s;
+      cursor: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select option { background: var(--deep); }
+    .form-group textarea { resize: none; height: 100px; }
+    .form-submit {
+      padding: 16px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy);
+      border: none;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: none;
+      transition: all 0.3s;
+      box-shadow: 0 6px 24px rgba(201,168,76,0.3);
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,168,76,0.45); }
+
+    /* FOOTER */
+    footer {
+      background: #06101e;
+      padding: 60px 80px 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+      margin-top: 14px;
+      font-weight: 300;
+    }
+    .footer-col h4 {
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li {
+      padding: 7px 0;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      cursor: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 30px;
+    }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-social { display: flex; gap: 16px; }
+    .social-btn {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      cursor: none;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 140px 24px 60px; }
+      .section { padding: 80px 24px; }
+      .about-grid, .appt-grid, .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .spec-grid, .testi-grid { grid-template-columns: 1fr; }
+      .services-list { grid-template-columns: 1fr; }
+      .service-item { border-right: none; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 40px 24px 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .exp-cards { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Dr. <span>Pandurang Magar</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#specialties">Specialties</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Patients</a></li>
+    <li><a href="#appointment" class="nav-cta">Book Appointment</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-mesh"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Orthopaedic Excellence</div>
+    <h1 class="hero-name">
+      <span class="dr">Dr.</span>
+      Pandurang<br>
+      <span class="surname">Magar</span>
+    </h1>
+    <div class="hero-title">
+      MBBS &bull; <strong>MS Orthopaedics</strong>
+    </div>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">
+      Dedicated to restoring mobility, relieving pain, and transforming lives through advanced orthopaedic care. Specialising in joint replacement, spine care, and sports medicine.
+    </p>
+    <div class="hero-actions">
+      <a href="#appointment" class="btn-primary">Book Appointment</a>
+      <a href="#about" class="btn-secondary">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">15<sup>+</sup></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">5K<sup>+</sup></div>
+        <div class="stat-label">Surgeries</div>
+      </div>
+      <div>
+        <div class="stat-num">98<sup>%</sup></div>
+        <div class="stat-label">Success Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-container">
+      <div class="hero-img-bg"></div>
+      <div class="hero-img-glow"></div>
+
+      <!-- Floating badges -->
+      <div class="float-badge fb-1">
+        <div class="fb-icon">🦴</div>
+        <div class="fb-title">Speciality</div>
+        <div class="fb-value">Ortho</div>
+        <div class="fb-sub">Bone & Joint Expert</div>
+      </div>
+      <div class="float-badge fb-2">
+        <div class="fb-icon">⭐</div>
+        <div class="fb-title">Patient Rating</div>
+        <div class="fb-value">4.9</div>
+        <div class="fb-sub">500+ Reviews</div>
+      </div>
+      <div class="float-badge fb-3">
+        <div class="fb-icon">🏆</div>
+        <div class="fb-title">Qualification</div>
+        <div class="fb-value">MS</div>
+        <div class="fb-sub">Orthopaedics</div>
+      </div>
+
+      <!-- Doctor CSS figure -->
+      <div class="doctor-silhouette">
+        <div class="doc-figure">
+          <div class="doc-head"></div>
+          <div class="doc-arm-l"></div>
+          <div class="doc-arm-r"></div>
+          <div class="doc-coat"></div>
+          <div class="doc-stethoscope"></div>
+          <div class="doc-legs"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="section-tag">Who We Are</div>
+  <h2 class="section-title">Healing Hands, <em>Compassionate Care</em></h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Dr. Pandurang Magar is a distinguished orthopaedic surgeon with over 15 years of dedicated service in bone, joint, and musculoskeletal medicine. His commitment to patient-centric care and surgical precision has earned him the trust of thousands across the region.</p>
+      <p>Trained at premier medical institutions, Dr. Magar combines evidence-based medicine with the latest minimally invasive surgical techniques to deliver outcomes that give patients their life back.</p>
+      <p>His philosophy is simple — every patient deserves personalized attention, honest communication, and the highest standard of orthopaedic care available.</p>
+      <ul class="qual-list">
+        <li><span class="qual-badge">MBBS</span>&nbsp; Bachelor of Medicine & Bachelor of Surgery</li>
+        <li><span class="qual-badge">MS Ortho</span>&nbsp; Master of Surgery in Orthopaedics</li>
+        <li><span class="qual-badge">Fellow</span>&nbsp; Advanced Joint Replacement Surgery</li>
+        <li><span class="qual-badge">Member</span>&nbsp; Indian Orthopaedic Association (IOA)</li>
+      </ul>
+    </div>
+    <div class="exp-cards reveal">
+      <div class="exp-card">
+        <div class="exp-num">15<sup>+</sup></div>
+        <div class="exp-desc">Years of Practice</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-num">5K<sup>+</sup></div>
+        <div class="exp-desc">Successful Surgeries</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-num">3K<sup>+</sup></div>
+        <div class="exp-desc">Happy Patients</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-num">98<sup>%</sup></div>
+        <div class="exp-desc">Recovery Success</div>
+      </div>
+      <div class="exp-card" style="grid-column:span 2">
+        <div class="exp-num">10<sup>+</sup></div>
+        <div class="exp-desc">Awards & Recognitions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section class="section specialties" id="specialties">
+  <div class="section-tag">Areas of Expertise</div>
+  <h2 class="section-title">Our <em>Specialties</em></h2>
+  <div class="spec-grid">
+    <div class="spec-card reveal">
+      <div class="spec-icon">🦵</div>
+      <div class="spec-name">Joint Replacement</div>
+      <div class="spec-desc">Advanced total knee, hip, and shoulder replacement surgeries using latest implant technologies for lasting mobility and pain relief.</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">🦴</div>
+      <div class="spec-name">Spine Surgery</div>
+      <div class="spec-desc">Comprehensive management of spinal disorders including disc prolapse, spondylosis, and minimally invasive spine stabilisation.</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">⚡</div>
+      <div class="spec-name">Sports Medicine</div>
+      <div class="spec-desc">Diagnosis and treatment of sports-related injuries including ACL tears, rotator cuff injuries, and ligament reconstruction.</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">🦷</div>
+      <div class="spec-name">Trauma & Fractures</div>
+      <div class="spec-desc">Expert management of complex fractures, dislocations, and polytrauma cases using modern fixation techniques.</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">🔬</div>
+      <div class="spec-name">Arthroscopy</div>
+      <div class="spec-desc">Minimally invasive keyhole surgeries for knee, shoulder, and ankle conditions ensuring faster recovery and smaller scars.</div>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">💊</div>
+      <div class="spec-name">Paediatric Orthopaedics</div>
+      <div class="spec-desc">Specialised care for children's bone and joint conditions including clubfoot, limb deformities, and growth plate injuries.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="section-tag">What We Offer</div>
+  <h2 class="section-title">Comprehensive <em>Services</em></h2>
+  <div class="services-list reveal">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <div>
+        <div class="service-name">Total Knee Replacement</div>
+        <div class="service-detail">Full or partial knee replacement surgery to relieve arthritis and restore joint function.</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <div>
+        <div class="service-name">Hip Replacement Surgery</div>
+        <div class="service-detail">Primary and revision hip arthroplasty using cemented and uncemented implants.</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <div>
+        <div class="service-name">ACL Reconstruction</div>
+        <div class="service-detail">Arthroscopic anterior cruciate ligament reconstruction for athletes and active individuals.</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <div>
+        <div class="service-name">Disc Prolapse Treatment</div>
+        <div class="service-detail">Surgical and non-surgical management of herniated discs and nerve compression.</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <div>
+        <div class="service-name">Fracture Management</div>
+        <div class="service-detail">Emergency and elective fracture fixation using ORIF, nailing, and plating techniques.</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">06</div>
+      <div>
+        <div class="service-name">Shoulder Arthroscopy</div>
+        <div class="service-detail">Keyhole surgery for rotator cuff tears, impingement, and shoulder instability.</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">07</div>
+      <div>
+        <div class="service-name">PRP Therapy</div>
+        <div class="service-detail">Platelet-rich plasma injections for joint pain, tendinopathy, and cartilage regeneration.</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">08</div>
+      <div>
+        <div class="service-name">Physiotherapy & Rehab</div>
+        <div class="service-detail">Post-operative rehabilitation programs tailored to each patient's recovery goals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="testimonials">
+  <div class="section-tag">Patient Stories</div>
+  <h2 class="section-title">What Our <em>Patients Say</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">After years of knee pain, Dr. Magar's surgery gave me my life back. The care and attention I received was extraordinary. I'm now walking pain-free for the first time in a decade.</p>
+      <div class="testi-name">Ramesh Patil</div>
+      <div class="testi-role">Knee Replacement Patient</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Dr. Magar is not just a skilled surgeon but also a compassionate doctor. He explained everything clearly and made me feel confident about my hip surgery. Exceptional outcome!</p>
+      <div class="testi-name">Sunita Deshmukh</div>
+      <div class="testi-role">Hip Replacement Patient</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">My ACL reconstruction was handled with absolute precision. As an athlete, I was back on the field in six months. Dr. Magar's expertise in sports medicine is truly world-class.</p>
+      <div class="testi-name">Vikram Shinde</div>
+      <div class="testi-role">ACL Reconstruction Patient</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section class="section appointment" id="appointment">
+  <div class="appt-grid">
+    <div class="reveal">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Book Your <em>Appointment</em></h2>
+      <p style="margin-top:20px;color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.8;font-weight:300;">
+        Take the first step towards a pain-free life. Schedule a consultation with Dr. Pandurang Magar and receive expert orthopaedic guidance tailored to your needs.
+      </p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Clinic Address</div>
+            <div class="ci-value">Magar Orthopaedic Clinic, Near City Hospital,<br>Maharashtra, India</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value">+91 98765 43210</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">Clinic Hours</div>
+            <div class="ci-value">Mon–Sat: 9:00 AM – 6:00 PM<br>Sun: Emergency Only</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">dr.magar@orthocare.in</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-tag">Online Form</div>
+      <h3 class="section-title" style="font-size:1.8rem;">Request a <em>Consultation</em></h3>
+      <div class="appt-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 00000 00000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" placeholder="Your age" />
+          </div>
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Concern / Speciality</label>
+          <select>
+            <option value="">Select your concern</option>
+            <option>Knee Pain / Replacement</option>
+            <option>Hip Pain / Replacement</option>
+            <option>Spine / Back Pain</option>
+            <option>Sports Injury</option>
+            <option>Fracture / Trauma</option>
+            <option>Shoulder / Elbow</option>
+            <option>Paediatric Orthopaedics</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Brief Description</label>
+          <textarea placeholder="Briefly describe your symptoms or concerns..."></textarea>
+        </div>
+        <button class="form-submit" id="submitBtn">
+          Request Appointment
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Dr. Pandurang Magar</div>
+      <p class="footer-tagline">MBBS, MS Orthopaedics<br>Restoring Movement. Rebuilding Lives.<br>Providing compassionate, expert orthopaedic care since 2009.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Specialties</h4>
+      <ul>
+        <li>Joint Replacement</li>
+        <li>Spine Surgery</li>
+        <li>Sports Medicine</li>
+        <li>Arthroscopy</li>
+        <li>Trauma Care</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about" style="color:inherit;text-decoration:none;">About Doctor</a></li>
+        <li><a href="#specialties" style="color:inherit;text-decoration:none;">Specialties</a></li>
+        <li><a href="#services" style="color:inherit;text-decoration:none;">Services</a></li>
+        <li><a href="#testimonials" style="color:inherit;text-decoration:none;">Testimonials</a></li>
+        <li><a href="#appointment" style="color:inherit;text-decoration:none;">Appointment</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Timings</h4>
+      <ul>
+        <li>Mon–Fri: 9 AM–6 PM</li>
+        <li>Saturday: 9 AM–2 PM</li>
+        <li>Sunday: Emergency</li>
+        <li>&nbsp;</li>
+        <li>+91 98765 43210</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Dr. Pandurang Magar. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="#" class="social-btn">f</a>
+      <a href="#" class="social-btn">in</a>
+      <a href="#" class="social-btn">✕</a>
+      <a href="#" class="social-btn">▶</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.1;
+    ry += (my - ry) * 0.1;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a,button,.spec-card,.testi-card,.exp-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1.6)';
+      ring.style.width = '52px'; ring.style.height = '52px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.width = '36px'; ring.style.height = '36px';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+
+  // Animated counter
+  function countUp(el, target, suffix='') {
+    let start = 0;
+    const dur = 2000;
+    const step = 16;
+    const inc = target / (dur / step);
+    const timer = setInterval(() => {
+      start = Math.min(start + inc, target);
+      el.textContent = (start >= 1000 ? Math.round(start/1000)+'K' : Math.round(start)) + suffix;
+      if (start >= target) clearInterval(timer);
+    }, step);
+  }
+  const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.stat-num').forEach(el => {
+          const txt = el.textContent;
+          if (txt.includes('15')) countUp(el, 15, '+');
+          if (txt.includes('5K')) countUp(el, 5000, '+');
+          if (txt.includes('98')) countUp(el, 98, '%');
+        });
+        statsObs.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObs.observe(heroStats);
+
+  // Appointment submit button
+  var submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function() {
+      submitBtn.textContent = 'Request Sent! We will call you soon.';
+      submitBtn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+    });
+  }
+
+  // Smooth nav active state
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    sections.forEach(sec => {
+      if (scrollY >= sec.offsetTop - 120) {
+        document.querySelectorAll('.nav-links a').forEach(a => a.style.color = '');
+        const activeLink = document.querySelector('.nav-links a[href="#' + sec.id + '"]');
+        if (activeLink && !activeLink.classList.contains('nav-cta')) activeLink.style.color = '#c9a84c';
+      }
+    });
+  });
+</script>
+</body>
+</html>
